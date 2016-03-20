@@ -12,15 +12,15 @@ import React, {
   Dimensions
 } from 'react-native';
 
+import Messenger from './components/messenger'
 //import Navigation from './components/navigation'
-import Navigation from './components/navigation'
 
 
 class App extends Component {
   render() {
     return (
       <View>
-        <Navigation />
+        <Messenger />
       </View>
     );
   }

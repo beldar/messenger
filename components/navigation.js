@@ -3,6 +3,7 @@
 import React, {
   Text,
   Navigator,
+  NavigatorIOS,
   View,
   Platform,
   Component
@@ -15,16 +16,17 @@ class Navigation extends Component {
     console.log(Navigator);
     return (
       <Navigator
-      renderScene={this.renderScene}
-      initialRoute={{
-        component: Messenger,
-        title: 'My View Title',
-        passProps: { myProp: 'foo' },
-      }}
-    />
+        style={{flex:1}}
+        initialRoute={{id: 'first'}}
+        renderScene={this.renderScene}
+        sceneStyle={{paddingTop: (Platform.OS === 'android' ? 56 : 64)}}
+        navigationBar={this._renderNavBar()}
+        />
+
     );
     // return (
     //   <Navigator
+    //     style={{flex:1, background: 'black'}}
     //     initialRoute={{index: 0, title: 'Gifted Messenger'}}
     //     renderScene={this.renderScene}
     //     configureScene={(route) => {
@@ -57,6 +59,7 @@ class Navigation extends Component {
     return (
       <Navigator.NavigationBar
         style={{
+          flex: 1,
           backgroundColor: '#007aff',
           alignItems: 'center',
         }}
@@ -68,9 +71,7 @@ class Navigation extends Component {
   renderScene(route, navigator) {
     console.log('Render scene');
     return (
-      <View>
-        <Text>TEST</Text>
-      </View>
+      <Messenger />
     );
   }
 };
